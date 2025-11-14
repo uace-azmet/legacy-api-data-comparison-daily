@@ -14,13 +14,13 @@ fxn_scatterplotTitle <- function(azmetStation) {
           htmltools::HTML("&nbsp;"),
           toupper(
             paste0(
-              "Hourly Data from the AZMet ", azmetStation, " Station"
+              "Daily Data from the AZMet ", azmetStation, " Station"
             )
           ),
           htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Hover over points for station, date, hour, and variable values.",
+            "Hover over points for station, date, and variable values.",
             id = "infoScatterplotTitle",
             placement = "right"
           )

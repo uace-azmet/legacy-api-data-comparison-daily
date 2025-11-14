@@ -34,7 +34,6 @@ fxn_scatterplot <- function(inData, legacyVar, apiVar) {
       text = ~paste0(
         "<br><b>AZMet Station:</b> ", meta_station_name,
         "<br><b>Date:</b> ", gsub(" 0", " ", format(date_datetime, "%b %d, %Y")),
-        "<br><b>Hour:</b> ", format(date_datetime, "%H:%M"),
         "<br><b>Legacy Value:</b> ", .data[[legacyVar]],
         "<br><b>API Value:</b> ", .data[[apiVar]]
       ),
