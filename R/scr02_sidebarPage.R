@@ -28,7 +28,7 @@ sidebarPage <- bslib::sidebar(
       htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
       bslib::tooltip(
         bsicons::bs_icon("info-circle"),
-        "Select a year and an AZMet station, then click or tap 'RETRIEVE HOURLY DATA'.",
+        "Select a year and an AZMet station, then click or tap 'RETRIEVE DAILY DATA'.",
         id = "infoDataOptions",
         placement = "right"
       ),
@@ -51,8 +51,8 @@ sidebarPage <- bslib::sidebar(
     ),
     
     shiny::actionButton(
-      inputId = "retrieveHourlyData",
-      label = "RETRIEVE HOURLY DATA",
+      inputId = "retrieveDailyData",
+      label = "RETRIEVE DAILY DATA",
       class = "btn btn-block btn-blue"
     )
   )

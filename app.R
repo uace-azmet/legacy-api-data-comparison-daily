@@ -1,4 +1,4 @@
-# Shiny app to compare Legacy and API values by year and station
+# Shiny app to compare Legacy and API daily values by year and station
 
 
 # UI -----
@@ -8,7 +8,7 @@ ui <- htmltools::htmlTemplate(
   
   filename = "azmet-shiny-template.html",
   
-  pageDataComparisonHourly = bslib::page(
+  pageDataComparisonDaily = bslib::page(
     title = NULL,
     theme = theme, # `scr##_theme.R`
     
@@ -48,17 +48,17 @@ server <- function(input, output, session) {
   # Reactives -----
   
   apiData <- shiny::eventReactive(legacyData(), {
-    idRetrievingHourlyData <- shiny::showNotification(
-      ui = "Retrieving hourly API data . . .",
+    idRetrievingDailyData <- shiny::showNotification(
+      ui = "Retrieving daily API data . . .",
       action = NULL,
       duration = NULL,
       closeButton = FALSE,
-      id = "idRetrievingHourlyData",
+      id = "idRetrievingDailyData",
       type = "message"
     )
 
     on.exit(
-      shiny::removeNotification(id = idRetrievingHourlyData),
+      shiny::removeNotification(id = idRetrievingDailyData),
       add = TRUE
     )
 
@@ -68,18 +68,18 @@ server <- function(input, output, session) {
     )
   })
   
-  legacyData <- shiny::eventReactive(input$retrieveHourlyData, {
-    idRetrievingHourlyData <- shiny::showNotification(
-      ui = "Retrieving hourly Legacy data . . .",
+  legacyData <- shiny::eventReactive(input$retrieveDailyData, {
+    idRetrievingDailyData <- shiny::showNotification(
+      ui = "Retrieving daily Legacy data . . .",
       action = NULL,
       duration = NULL,
       closeButton = FALSE,
-      id = "idRetrievingHourlyData",
+      id = "idRetrievingDailyData",
       type = "message"
     )
 
     on.exit(
-      shiny::removeNotification(id = idRetrievingHourlyData),
+      shiny::removeNotification(id = idRetrievingDailyData),
       add = TRUE
     )
 
@@ -90,17 +90,17 @@ server <- function(input, output, session) {
   })
   
   fullJoin <- shiny::eventReactive(apiData(), {
-    idRetrievingHourlyData <- shiny::showNotification(
-      ui = "Joining hourly Legacy and API data . . .",
+    idRetrievingDailyData <- shiny::showNotification(
+      ui = "Joining daily Legacy and API data . . .",
       action = NULL,
       duration = NULL,
       closeButton = FALSE,
-      id = "idRetrievingHourlyData",
+      id = "idRetrievingDailyData",
       type = "message"
     )
 
     on.exit(
-      shiny::removeNotification(id = idRetrievingHourlyData),
+      shiny::removeNotification(id = idRetrievingDailyData),
       add = TRUE
     )
 
@@ -110,7 +110,7 @@ server <- function(input, output, session) {
     )
   })
   
-  reporting <- shiny::eventReactive(input$retrieveHourlyData, {
+  reporting <- shiny::eventReactive(input$retrieveDailyData, {
     fxn_reporting(
       year = input$year,
       legacyData = legacyData(),
@@ -118,11 +118,11 @@ server <- function(input, output, session) {
     )
   })
   
-  reportingTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+  reportingTitle <- shiny::eventReactive(input$retrieveDailyData, {
     fxn_reportingTitle(azmetStation = input$azmetStation)
   })
   
-  scatterplotTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+  scatterplotTitle <- shiny::eventReactive(input$retrieveDailyData, {
     fxn_scatterplotTitle(azmetStation = input$azmetStation)
   })
   
