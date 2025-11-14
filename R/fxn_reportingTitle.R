@@ -14,7 +14,7 @@ fxn_reportingTitle <- function(azmetStation) {
           htmltools::HTML("&nbsp;"),
           toupper(
             paste0(
-              "Hourly Data from the AZMet ", azmetStation, " Station"
+              "Daily Data from the AZMet ", azmetStation, " Station"
             )
           )#,
           # htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
