@@ -18,11 +18,11 @@ fxn_apiData <- function(station, year) {
   
   apiData <- azmetr::az_daily(
     station_id = station_id,
-    start_date_time = paste(year, "-01-01"),
-    end_date_time = paste(year, "-12-31")
+    start_date = paste(year, "-01-01"),
+    end_date = paste(year, "-12-31")
   ) %>% 
     dplyr::select(
-      "date_datetime", 
+      "datetime", 
       "date_doy",
       "date_year", 
       "meta_needs_review", 
@@ -51,7 +51,7 @@ fxn_apiData <- function(station, year) {
       "wind_vector_dir_stand_dev",
       "wind_vector_magnitude"
     ) %>% 
-    dplyr::mutate(date_datetime = as.character(date_datetime))
+    dplyr::mutate(datetime = as.character(datetime))
   
   return(apiData)
 }

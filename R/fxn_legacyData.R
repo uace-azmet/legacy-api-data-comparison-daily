@@ -48,19 +48,27 @@ fxn_legacyData <- function(station, year) {
     ) %>% 
     dplyr::mutate(
       obs_dyly_precip_total = as.numeric(obs_dyly_precip_total),
-      obs_dyly_relative_humidity = as.numeric(obs_dyly_relative_humidity),
+      obs_dyly_relative_humidity_max = as.numeric(obs_dyly_relative_humidity_max),
+      obs_dyly_relative_humidity_mean = as.numeric(obs_dyly_relative_humidity_mean),
+      obs_dyly_relative_humidity_min = as.numeric(obs_dyly_relative_humidity_min),
       obs_dyly_sol_rad_total = as.numeric(obs_dyly_sol_rad_total),
-      obs_dyly_temp_air = as.numeric(obs_dyly_temp_air),
-      obs_dyly_temp_soil_10cm = as.numeric(obs_dyly_temp_soil_10cm),
-      obs_dyly_temp_soil_50cm = as.numeric(obs_dyly_temp_soil_50cm),
+      obs_dyly_temp_air_max = as.numeric(obs_dyly_temp_air_max),
+      obs_dyly_temp_air_mean = as.numeric(obs_dyly_temp_air_mean),
+      obs_dyly_temp_air_min = as.numeric(obs_dyly_temp_air_min),
+      obs_dyly_temp_soil_10cm_max = as.numeric(obs_dyly_temp_soil_10cm_max),
+      obs_dyly_temp_soil_10cm_mean = as.numeric(obs_dyly_temp_soil_10cm_mean),
+      obs_dyly_temp_soil_10cm_min = as.numeric(obs_dyly_temp_soil_10cm_min),
+      obs_dyly_temp_soil_50cm_max = as.numeric(obs_dyly_temp_soil_50cm_max),
+      obs_dyly_temp_soil_50cm_mean = as.numeric(obs_dyly_temp_soil_50cm_mean),
+      obs_dyly_temp_soil_50cm_min = as.numeric(obs_dyly_temp_soil_50cm_min),
       obs_dyly_actual_vp_mean = as.numeric(obs_dyly_actual_vp_mean),
       obs_dyly_vpd_mean = as.numeric(obs_dyly_vpd_mean),
-      obs_dyly_wind_spd = as.numeric(obs_dyly_wind_spd),
       obs_dyly_wind_spd_max = as.numeric(obs_dyly_wind_spd_max),
+      obs_dyly_wind_spd_mean = as.numeric(obs_dyly_wind_spd_mean),
       obs_dyly_wind_vector_dir = as.numeric(obs_dyly_wind_vector_dir),
       obs_dyly_wind_vector_dir_stand_dev = as.numeric(obs_dyly_wind_vector_dir_stand_dev),
       obs_dyly_wind_vector_magnitude = as.numeric(obs_dyly_wind_vector_magnitude),
-      date_datetime = obs_datetime
+      datetime = as.character(obs_datetime)
     )
   
   return(legacyData)

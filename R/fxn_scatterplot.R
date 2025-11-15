@@ -15,7 +15,7 @@
 fxn_scatterplot <- function(inData, legacyVar, apiVar) {
   
   inData <- inData |>
-    dplyr::mutate(date_datetime = lubridate::ymd_hms(date_datetime))
+    dplyr::mutate(datetime = lubridate::ymd_hms(datetime))
   
   scatterplotFontFamily <- "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
   
@@ -33,7 +33,7 @@ fxn_scatterplot <- function(inData, legacyVar, apiVar) {
       hoverinfo = "text",
       text = ~paste0(
         "<br><b>AZMet Station:</b> ", meta_station_name,
-        "<br><b>Date:</b> ", gsub(" 0", " ", format(date_datetime, "%b %d, %Y")),
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
         "<br><b>Legacy Value:</b> ", .data[[legacyVar]],
         "<br><b>API Value:</b> ", .data[[apiVar]]
       ),

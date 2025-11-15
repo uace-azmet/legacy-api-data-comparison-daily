@@ -18,32 +18,6 @@ fxn_reporting <- function(year, legacyData, apiData) {
   
   apiNAs <- apiData %>% 
     dplyr::select(
-      "obs_dyly_precip_total",
-      "obs_dyly_relative_humidity_max",
-      "obs_dyly_relative_humidity_mean",
-      "obs_dyly_relative_humidity_min",
-      "obs_dyly_sol_rad_total",
-      "obs_dyly_temp_air_max",
-      "obs_dyly_temp_air_mean",
-      "obs_dyly_temp_air_min",
-      "obs_dyly_temp_soil_10cm_max",
-      "obs_dyly_temp_soil_10cm_mean",
-      "obs_dyly_temp_soil_10cm_min",
-      "obs_dyly_temp_soil_50cm_max",
-      "obs_dyly_temp_soil_50cm_mean",
-      "obs_dyly_temp_soil_50cm_min",
-      "obs_dyly_actual_vp_mean",
-      "obs_dyly_vpd_mean",
-      "obs_dyly_wind_spd_max",
-      "obs_dyly_wind_spd_mean",
-      "obs_dyly_wind_vector_dir",
-      "obs_dyly_wind_vector_dir_stand_dev",
-      "obs_dyly_wind_vector_magnitude"
-    ) %>% 
-    dplyr::summarise(total = sum(is.na(.)))
-  
-  legacyNAs <- legacyData %>% 
-    dplyr::select(
       "precip_total_mm",
       "relative_humidity_max",
       "relative_humidity_mean",
@@ -65,6 +39,32 @@ fxn_reporting <- function(year, legacyData, apiData) {
       "wind_vector_dir",
       "wind_vector_dir_stand_dev",
       "wind_vector_magnitude"
+    ) %>% 
+    dplyr::summarise(total = sum(is.na(.)))
+  
+  legacyNAs <- legacyData %>% 
+    dplyr::select(
+      "obs_dyly_precip_total",
+      "obs_dyly_relative_humidity_max",
+      "obs_dyly_relative_humidity_mean",
+      "obs_dyly_relative_humidity_min",
+      "obs_dyly_sol_rad_total",
+      "obs_dyly_temp_air_max",
+      "obs_dyly_temp_air_mean",
+      "obs_dyly_temp_air_min",
+      "obs_dyly_temp_soil_10cm_max",
+      "obs_dyly_temp_soil_10cm_mean",
+      "obs_dyly_temp_soil_10cm_min",
+      "obs_dyly_temp_soil_50cm_max",
+      "obs_dyly_temp_soil_50cm_mean",
+      "obs_dyly_temp_soil_50cm_min",
+      "obs_dyly_actual_vp_mean",
+      "obs_dyly_vpd_mean",
+      "obs_dyly_wind_spd_max",
+      "obs_dyly_wind_spd_mean",
+      "obs_dyly_wind_vector_dir",
+      "obs_dyly_wind_vector_dir_stand_dev",
+      "obs_dyly_wind_vector_magnitude"
     ) %>% 
     dplyr::summarise(total = sum(is.na(.)))
   

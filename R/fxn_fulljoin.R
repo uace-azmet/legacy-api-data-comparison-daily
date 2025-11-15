@@ -10,7 +10,7 @@ fxn_fullJoin <- function(legacyData, apiData) {
   fullJoin <- dplyr::full_join(
     x = legacyData,
     y = apiData,
-    by = "date_datetime"
+    by = "datetime"
   )
   
   return(fullJoin)
