@@ -16,10 +16,18 @@ fxn_apiData <- function(station, year) {
     station_id <- paste0("az", stationInfo$stn_no)
   }
   
+  start_date <- paste0(year, "-01-01")
+  
+  if (Sys.Date() < as.Date(paste0(year, "-12-31"))) {
+    end_date <- Sys.Date() - lubridate::ddays(x = 1)
+  } else {
+    end_date <- paste0(year, "-12-31")
+  }
+  
   apiData <- azmetr::az_daily(
     station_id = station_id,
-    start_date = paste(year, "-01-01"),
-    end_date = paste(year, "-12-31")
+    start_date = start_date,
+    end_date = end_date
   ) %>% 
     dplyr::select(
       "datetime", 
