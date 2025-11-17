@@ -130,14 +130,14 @@ server <- function(input, output, session) {
     )
   })
   
-  reportingTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+  reportingTitle <- shiny::eventReactive(input$retrieveDailyData, {
     fxn_reportingTitle(
       azmetStation = input$azmetStation,
       year = input$year
     )
   })
   
-  scatterplotTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+  scatterplotTitle <- shiny::eventReactive(input$retrieveDailyData, {
     fxn_scatterplotTitle(
       azmetStation = input$azmetStation,
       year = input$year
