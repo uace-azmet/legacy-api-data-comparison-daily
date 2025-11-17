@@ -51,14 +51,18 @@ server <- function(input, output, session) {
     idRetrievingDailyData <- shiny::showNotification(
       ui = "Retrieving daily API data . . .",
       action = NULL,
-      duration = NULL,
+      duration = 3,
       closeButton = FALSE,
       id = "idRetrievingDailyData",
-      type = "message"
+      type = "message",
+      session = getDefaultReactiveDomain()
     )
-
+    
     on.exit(
-      shiny::removeNotification(id = idRetrievingDailyData),
+      shiny::removeNotification(
+        id = idRetrievingHourlyData,
+        session = getDefaultReactiveDomain()
+      ),
       add = TRUE
     )
 
@@ -72,14 +76,18 @@ server <- function(input, output, session) {
     idRetrievingDailyData <- shiny::showNotification(
       ui = "Retrieving daily Legacy data . . .",
       action = NULL,
-      duration = NULL,
+      duration = 3,
       closeButton = FALSE,
       id = "idRetrievingDailyData",
-      type = "message"
+      type = "message",
+      session = getDefaultReactiveDomain()
     )
-
+    
     on.exit(
-      shiny::removeNotification(id = idRetrievingDailyData),
+      shiny::removeNotification(
+        id = idRetrievingHourlyData,
+        session = getDefaultReactiveDomain()
+      ),
       add = TRUE
     )
 
@@ -93,14 +101,18 @@ server <- function(input, output, session) {
     idRetrievingDailyData <- shiny::showNotification(
       ui = "Joining daily Legacy and API data . . .",
       action = NULL,
-      duration = NULL,
+      duration = 3,
       closeButton = FALSE,
       id = "idRetrievingDailyData",
-      type = "message"
+      type = "message",
+      session = getDefaultReactiveDomain()
     )
-
+    
     on.exit(
-      shiny::removeNotification(id = idRetrievingDailyData),
+      shiny::removeNotification(
+        id = idRetrievingHourlyData,
+        session = getDefaultReactiveDomain()
+      ),
       add = TRUE
     )
 
@@ -118,12 +130,18 @@ server <- function(input, output, session) {
     )
   })
   
-  reportingTitle <- shiny::eventReactive(input$retrieveDailyData, {
-    fxn_reportingTitle(azmetStation = input$azmetStation)
+  reportingTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+    fxn_reportingTitle(
+      azmetStation = input$azmetStation,
+      year = input$year
+    )
   })
   
-  scatterplotTitle <- shiny::eventReactive(input$retrieveDailyData, {
-    fxn_scatterplotTitle(azmetStation = input$azmetStation)
+  scatterplotTitle <- shiny::eventReactive(input$retrieveHourlyData, {
+    fxn_scatterplotTitle(
+      azmetStation = input$azmetStation,
+      year = input$year
+    )
   })
   
   
