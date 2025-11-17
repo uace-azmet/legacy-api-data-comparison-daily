@@ -60,7 +60,7 @@ server <- function(input, output, session) {
     
     on.exit(
       shiny::removeNotification(
-        id = idRetrievingHourlyData,
+        id = idRetrievingDailyData,
         session = getDefaultReactiveDomain()
       ),
       add = TRUE
@@ -85,7 +85,7 @@ server <- function(input, output, session) {
     
     on.exit(
       shiny::removeNotification(
-        id = idRetrievingHourlyData,
+        id = idRetrievingDailyData,
         session = getDefaultReactiveDomain()
       ),
       add = TRUE
@@ -110,7 +110,7 @@ server <- function(input, output, session) {
     
     on.exit(
       shiny::removeNotification(
-        id = idRetrievingHourlyData,
+        id = idRetrievingDailyData,
         session = getDefaultReactiveDomain()
       ),
       add = TRUE
