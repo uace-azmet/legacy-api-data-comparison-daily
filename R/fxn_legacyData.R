@@ -45,6 +45,36 @@ fxn_legacyData <- function(station, year) {
       "obs_dyly_wind_vector_dir",
       "obs_dyly_wind_vector_dir_stand_dev",
       "obs_dyly_wind_vector_magnitude"
+    )  %>% 
+    dplyr::mutate(
+      dplyr::across(
+        c(
+          obs_hrly_actual_vp,
+          # obs_hrly_bat_volt,
+          obs_hrly_sol_rad_total,
+          obs_hrly_vpd
+        ),
+        \(x) if_else(x == "-999.00", NA_character_, x)
+      ),
+      dplyr::across(
+        c(
+          obs_hrly_precip_total,
+          starts_with("obs_hrly_temp_"),
+          starts_with("obs_hrly_wind_spd"),
+          starts_with("obs_hrly_wind_vector_magnitude")#,
+          # starts_with("obs_hrly_wind_2min_spd_"),
+        ),
+        \(x) if_else(x == "-9999.0", NA_character_, x)
+      ),
+      dplyr::across(
+        c(
+          obs_hrly_relative_humidity,
+          starts_with("obs_hrly_wind_vector_dir")#,
+          # obs_hrly_wind_2min_vector_dir,
+          # obs_hrly_wind_2min_timestamp
+        ),
+        \(x) if_else(x == "-99999", NA_character_, x)
+      )
     ) %>% 
     dplyr::mutate(
       obs_dyly_precip_total = as.numeric(obs_dyly_precip_total),
